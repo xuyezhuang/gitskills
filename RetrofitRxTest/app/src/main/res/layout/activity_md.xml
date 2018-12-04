@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--drawerlayout:滑动菜单首先他是一个布局，在布局中允许直接放入2个直接的子控件，第一个控件是主屏幕的控件，第二个控件是滑动菜单中的内容-->
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:text="标题"/>
+            </android.support.v7.widget.Toolbar>
+            <!--app:popupTheme：指定的是在toolbar上弹出的菜单-->
+            <!--多一层appbarlayout包裹是因为在当前相当于framelaout布局中recyclerview会遮住了toolbar，然后在recyclerview上设置layout_behavibor,
+            并且在toolbar设置：app:layout_scrollFlags="scroll|enterAlways|snap"   scroll：表示当前recyclerview向上滚动的时候一起向上滚动并且隐藏，
+            enterAlways：则跟scroll类似，向下滚动的时候显示。snap：是根据滚动距离自动隐藏或者显示
+            appbarlayout本质上一个垂直方向的linearlayout，内部做了很多滑动封装，并且能接受到layout_behavior滑动的通知而变化-->
+
+            <!--R.layout.activity_fruit：折叠状态栏的布局-->
+        </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipe_refre"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <!--SwipeRefreshLayout：下拉刷新控件：用swipe包裹recyclerview，所以layout_behavior也变成在SwipeRefreshLayout上了-->
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recycler_view"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            ></android.support.v7.widget.RecyclerView></android.support.v4.widget.SwipeRefreshLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:src="@drawable/timg"
+            app:elevation="8dp" />
+        <!--elevation：指定悬浮按钮的高度，产生立体感阴影-->
+
+        <!--Framelayout换成Coordinatorlayout,他是一个加强版的Framelayout，
+        类似当前Snackbar弹出把悬浮按钮遮挡了，只要让coordinatorlayout监听到他的弹出，
+        他就会自动将内部的FlationActionButton向上偏移，他本身就是一个framelayout，直接替换不用做其他设置-->
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/nav_menu"
+        app:headerLayout="@layout/nav_header"
+        />
+</android.support.v4.widget.DrawerLayout>

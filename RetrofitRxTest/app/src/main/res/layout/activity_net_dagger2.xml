@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".dagger2.NetDagger2">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="请输入您的账号"
+        android:gravity="center_horizontal"
+        android:id="@+id/account_name"
+        android:layout_marginTop="40dp"
+        />
+
+
+    <EditText
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="请输入您的密码"
+        android:id="@+id/pwd"
+        android:layout_marginTop="40dp"
+        />
+
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/loggin"
+        android:text="登录"
+        android:textSize="22sp"
+        android:background="#84ff84"
+        />
+
+</LinearLayout>
